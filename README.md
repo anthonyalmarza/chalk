@@ -1,16 +1,16 @@
 chalk
 =====
 
-***A Light-weight python package for terminal output in color***
+####*A Light-weight python package for terminal output in color*
 
 *"Color printing so easy, makes you wanna smack yo' momma."*
 
-Installation:
+**Installation:**
 
     pip install pychalk
 
 
-In Module Usage:
+**In Module Usage:**
 
 ```python
 import chalk
@@ -23,7 +23,7 @@ chalk.cyan('...more stuff', opts=('bold', 'underscore'))
 ```
 
 
-Logging:
+**Logging:**
 
 ```python
 import logging
@@ -39,4 +39,26 @@ logger.setLevel(logging.DEBUG)
 logger.error('Error!!!!')
 ```
 
-Bigups go to @billjohnston - you know why fella.
+**Testing:**
+
+After cloning the repo...
+
+    anthony@lappy6000:~/git/$ cd chalk
+
+    anthony@lappy6000:~/git/chalk$ vitrualenv venv --no-site-packages --distribute
+
+    anthony@lappy6000:~/git/chalk$ source venv/bin/activate
+
+    (venv)anthony@lappy6000:~/git/chalk$ pip install nose
+
+    (venv)anthony@lappy6000:~/git/chalk$ nosetests chalk.tests
+    ......
+    ----------------------------------------------------------------------
+    Ran 6 tests in 0.002s
+
+    OK
+
+
+**Big-ups**
+
+@billjohnston..
