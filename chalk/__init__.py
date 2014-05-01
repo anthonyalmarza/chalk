@@ -22,7 +22,7 @@ FORMATS = ('reset', 'bold', 'underscore', 'blink', 'reverse', 'hide')
 Format = namedtuple('Format', FORMATS)
 Color = namedtuple('Color', COLORS)
 
-_esc = "\033[%sm"
+_esc = "\x1b[%sm"
 _clear = _esc % "0"
 
 # ansi standards http://ascii-table.com/ansi-escape-sequences.php
