@@ -1,7 +1,14 @@
 chalk
 =====
 
-A Light-weight python package for terminal output in color
+***A Light-weight python package for terminal output in color***
+
+*"Color printing so easy, makes you wanna smack yo' momma."*
+
+Installation:
+
+    pip install pychalk
+
 
 In Module Usage:
 
@@ -31,3 +38,5 @@ Logging:
 
     logger.error('Error!!!!')
 ```
+
+Bigups go to @billjohnston - you know why fella.

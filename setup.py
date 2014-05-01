@@ -19,7 +19,7 @@ def readlines(rel_path):
 setup(
     author = "Anthony Almarza",
     author_email = "anthony@reeliolabs.com",
-    name = "chalk",
+    name = "pychalk",
     packages = find_packages(),
     version = "0.0.1",
     url = "https://github.com/anthonyalmarza/chalk",
