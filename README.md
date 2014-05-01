@@ -5,6 +5,12 @@ chalk
 
 *"Color printing so easy, makes you wanna smack yo' momma."*
 
+**Overview**
+
+Chalk allows you to print to your terminal in color. It also provides a simple
+`logging` handler and formatter for a more informative logging experience.
+Why print in black and white?
+
 **Installation:**
 
     pip install pychalk
