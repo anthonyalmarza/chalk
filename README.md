@@ -16,42 +16,18 @@ Why print in black and white?
     pip install pychalk
 
 
-**In Module Usage:** [`examples/example-module.py`](examples/example-module.py)
+**In Module Usage:**
 
-![example-module.py](images/example-module.png)
+[`examples/example-module.py`](examples/example-module.py)
 
-```python
-import chalk
-
-chalk.blue("Hello world!!")
-chalk.yellow("Listen to me!!!")
-chalk.red("ERROR", pipe=chalk.stderr)
-chalk.magenta('This is pretty cool', opts='bold')
-chalk.cyan('...more stuff', opts=('bold', 'underscore'))
-```
+![example-module.py](images/module.png)
 
 
-**Logging:** [`examples/example-log.py`](examples/example-log.py)
+**Logging:**
 
-![example-log.py](images/example-log.png)
+[`examples/example-log.py`](examples/example-log.py)
 
-```python
-import logging
-from chalk import log
-
-logger = logging.getLogger(__name__)
-
-handler = log.ChalkHandler()
-handler.setLevel(logging.DEBUG)
-logger.addHandler(handler)
-logger.setLevel(logging.DEBUG)
-
-logger.error('Error!!!!')
-logger.warning('Warning!!!!')
-logger.info('Info!!!!')
-logger.debug('Debug!!!!')
-```
-
+![example-log.py](images/log.png)
 
 
 **Testing:**
@@ -74,4 +50,5 @@ OK
 
 **Big-ups**
 
-@billjohnston..
+* @billjohnston
+* @livibetter
