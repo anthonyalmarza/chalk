@@ -16,7 +16,9 @@ Why print in black and white?
     pip install pychalk
 
 
-**In Module Usage:**
+**In Module Usage:** [`examples/example-module.py`](examples/example-module.py)
+
+![example-module.py](images/example-module.png)
 
 ```python
 import chalk
@@ -29,7 +31,9 @@ chalk.cyan('...more stuff', opts=('bold', 'underscore'))
 ```
 
 
-**Logging:**
+**Logging:** [`examples/example-log.py`](examples/example-log.py)
+
+![example-log.py](images/example-log.png)
 
 ```python
 import logging
@@ -43,26 +47,29 @@ logger.addHandler(handler)
 logger.setLevel(logging.DEBUG)
 
 logger.error('Error!!!!')
+logger.warning('Warning!!!!')
+logger.info('Info!!!!')
+logger.debug('Debug!!!!')
 ```
+
+
 
 **Testing:**
 
-After cloning the repo...
 
-    anthony@lappy6000:~/git/$ cd chalk
+```
+$ git clone https://github.com/anthonyalmarza/chalk.git
+$ cd chalk
+$ vitrualenv venv --no-site-packages --distribute
+$ source venv/bin/activate
+$ pip install nose
+$ nosetests chalk.tests # or simply python -m unittest chalk.tests
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
 
-    anthony@lappy6000:~/git/chalk$ vitrualenv venv --no-site-packages --distribute
-
-    anthony@lappy6000:~/git/chalk$ source venv/bin/activate
-
-    (venv)anthony@lappy6000:~/git/chalk$ pip install nose
-
-    (venv)anthony@lappy6000:~/git/chalk$ nosetests chalk.tests
-    ......
-    ----------------------------------------------------------------------
-    Ran 6 tests in 0.002s
-
-    OK
+OK
+```
 
 
 **Big-ups**
