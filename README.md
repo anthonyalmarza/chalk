@@ -18,53 +18,37 @@ Why print in black and white?
 
 **In Module Usage:**
 
-```python
-import chalk
+[`examples/example-module.py`](examples/example-module.py)
 
-chalk.blue("Hello world!!")
-chalk.yellow("Listen to me!!!")
-chalk.red("ERROR", pipe=chalk.stderr)
-chalk.magenta('This is pretty cool', opts='bold')
-chalk.cyan('...more stuff', opts=('bold', 'underscore'))
-```
+![example-module.py](images/module.png)
 
 
 **Logging:**
 
-```python
-import logging
-from chalk import log
+[`examples/example-log.py`](examples/example-log.py)
 
-logger = logging.getLogger(__name__)
+![example-log.py](images/log.png)
 
-handler = log.ChalkHandler()
-handler.setLevel(logging.DEBUG)
-logger.addHandler(handler)
-logger.setLevel(logging.DEBUG)
-
-logger.error('Error!!!!')
-```
 
 **Testing:**
 
-After cloning the repo...
 
-    anthony@lappy6000:~/git/$ cd chalk
+```
+$ git clone https://github.com/anthonyalmarza/chalk.git
+$ cd chalk
+$ vitrualenv venv --no-site-packages --distribute
+$ source venv/bin/activate
+$ pip install nose
+$ nosetests chalk.tests # or simply python -m unittest chalk.tests
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
 
-    anthony@lappy6000:~/git/chalk$ vitrualenv venv --no-site-packages --distribute
-
-    anthony@lappy6000:~/git/chalk$ source venv/bin/activate
-
-    (venv)anthony@lappy6000:~/git/chalk$ pip install nose
-
-    (venv)anthony@lappy6000:~/git/chalk$ nosetests chalk.tests
-    ......
-    ----------------------------------------------------------------------
-    Ran 6 tests in 0.002s
-
-    OK
+OK
+```
 
 
 **Big-ups**
 
-@billjohnston..
+* @billjohnston
+* @livibetter
