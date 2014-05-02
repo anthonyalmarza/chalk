@@ -21,9 +21,9 @@ setup(
     author_email = "anthony@reeliolabs.com",
     name = "pychalk",
     packages = find_packages(),
-    version = "0.0.2",
+    version = "0.0.3",
     url = "https://github.com/anthonyalmarza/chalk",
-    download_url = "https://github.com/anthonyalmarza/chalk/tarball/v0.0.2-beta",
+    download_url = "https://github.com/anthonyalmarza/chalk/tarball/v0.0.3-beta",
     description = "Color printing in python",
     long_description = "Also includes a logging handler for printing in color.",
     classifiers = [
