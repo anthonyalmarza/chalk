@@ -24,6 +24,7 @@ Color = namedtuple('Color', COLORS)
 
 _esc = "\x1b[%sm"
 _clear = _esc % "0"
+_clear += '\n\r'
 
 # ansi standards http://ascii-table.com/ansi-escape-sequences.php
 fnt = Format('0', '1', '4', '5', '7', '8')

@@ -48,7 +48,7 @@ class TestChalk(unittest.TestCase):
     def test_format_txt(self):
         "sometimes doc strings are useless"
         actual = chalk.format_txt('white', 'hello', 'black', None)
-        expected = "\x1b[37;40;mhello\x1b[0m"
+        expected = "\x1b[37;40;mhello\x1b[0m\n\r"
         self.assertEqual(actual, expected)
 
     def test_existance_of_needed_functions(self):
