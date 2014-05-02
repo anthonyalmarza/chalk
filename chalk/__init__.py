@@ -34,7 +34,7 @@ bgs = Color(*['4%d' % i for i in range(8)])
 
 def make_code(fg, bg=None, opts=None):
     "makes the visualization escape code"
-    value = '%s;'
+    value = '%s'
     if opts and isinstance(opts, str):
         opts = (opts,)
     elif opts and not any(isinstance(opts, typo) for typo in (list, tuple)):
@@ -43,7 +43,7 @@ def make_code(fg, bg=None, opts=None):
     parts.append(value % getattr(fgs, fg))
     if bg:
         parts.append(value % getattr(bgs, bg))
-    return _esc % ''.join(parts)
+    return _esc % ';'.join(parts)
 
 
 def format_txt(fg, txt, bg, opts):
