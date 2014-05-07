@@ -4,7 +4,6 @@ import sys
 
 def getChalkColor(level):
     "gets the appropriate piece of chalk for the logging level"
-    _chalk = chalk._clear
     if level >= logging.ERROR:
         _chalk = chalk.format_red
     elif level >= logging.WARNING:

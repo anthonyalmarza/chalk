@@ -10,6 +10,7 @@ Usage:
     chalk.cyan('...more stuff', opts=('bold', 'underscore'))
 """
 from collections import namedtuple
+from os import linesep
 from sys import stdout, stderr, modules
 
 
@@ -23,8 +24,8 @@ Format = namedtuple('Format', FORMATS)
 Color = namedtuple('Color', COLORS)
 
 _esc = "\x1b[%sm"
-_clear = _esc % "0"
-_clear += '\n\r'
+_clear_formatting = _esc % "0"
+_clear_formatting += linesep
 
 # ansi standards http://ascii-table.com/ansi-escape-sequences.php
 fnt = Format('0', '1', '4', '5', '7', '8')
@@ -47,7 +48,7 @@ def make_code(fg, bg=None, opts=None):
 
 
 def format_txt(fg, txt, bg, opts):
-    return make_code(fg, bg, opts) + txt + _clear
+    return make_code(fg, bg, opts) + txt + _clear_formatting
 
 
 def format_factory(fg):
@@ -71,3 +72,8 @@ __module__ = modules[__name__]
 for color in COLORS:
     setattr(__module__, color, chalk(color))
     setattr(__module__, 'format_%s' % color, format_factory(color))
+
+def eraser():
+    "Equivalent to running bash 'clear' command"
+    stdout.write('\x1b[2J\x1b[0;0H' + linesep)
+    return
