@@ -14,6 +14,9 @@ from os import linesep
 from sys import stdout, stderr, modules
 
 
+__version__ = "0.0.4"
+
+
 COLORS = (
     'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'
 )

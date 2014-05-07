@@ -1,3 +1,4 @@
+import chalk
 import os, sys
 from setuptools import setup, find_packages
 
@@ -21,9 +22,9 @@ setup(
     author_email = "anthony@reeliolabs.com",
     name = "pychalk",
     packages = find_packages(),
-    version = "0.0.3",
+    version = chalk.__version__,
     url = "https://github.com/anthonyalmarza/chalk",
-    download_url = "https://github.com/anthonyalmarza/chalk/tarball/v0.0.3-beta",
+    download_url = "https://github.com/anthonyalmarza/chalk/tarball/v"+chalk.__version__+"-beta",
     description = "Color printing in python",
     long_description = "Also includes a logging handler for printing in color.",
     classifiers = [
