@@ -2,6 +2,7 @@ import chalk
 import logging
 import sys
 
+
 def getChalkColor(level):
     "gets the appropriate piece of chalk for the logging level"
     if level >= logging.ERROR:

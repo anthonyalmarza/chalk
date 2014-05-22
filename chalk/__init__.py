@@ -14,7 +14,7 @@ from os import linesep
 from sys import stdout, stderr, modules
 
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 
 
 COLORS = (
@@ -28,7 +28,6 @@ Color = namedtuple('Color', COLORS)
 
 _esc = "\x1b[%sm"
 _clear_formatting = _esc % "0"
-_clear_formatting += linesep
 
 # ansi standards http://ascii-table.com/ansi-escape-sequences.php
 fnt = Format('0', '1', '4', '5', '7', '8')
@@ -43,7 +42,7 @@ def make_code(fg, bg=None, opts=None):
         opts = (opts,)
     elif opts and not any(isinstance(opts, typo) for typo in (list, tuple)):
         raise TypeError("opts expects a strict iterable. e.g. (x,)")
-    parts = [ value % getattr(fnt, attr) for attr in opts ] if opts else []
+    parts = [value % getattr(fnt, attr) for attr in opts] if opts else []
     parts.append(value % getattr(fgs, fg))
     if bg:
         parts.append(value % getattr(bgs, bg))
@@ -51,6 +50,8 @@ def make_code(fg, bg=None, opts=None):
 
 
 def format_txt(fg, txt, bg, opts):
+    if not isinstance(txt, (str, unicode)):
+        txt = str(txt)
     return make_code(fg, bg, opts) + txt + _clear_formatting
 
 
@@ -65,9 +66,8 @@ def chalk(fg):
     def _chalk(txt, bg=None, pipe=stdout, opts=None):
         "A piece of chalk that you call by color"
         pipe.write(format_txt(fg, txt, bg, opts))
+        pipe.write(linesep)
     return _chalk
-
-
 
 __module__ = modules[__name__]
 
@@ -75,6 +75,7 @@ __module__ = modules[__name__]
 for color in COLORS:
     setattr(__module__, color, chalk(color))
     setattr(__module__, 'format_%s' % color, format_factory(color))
+
 
 def eraser():
     "Equivalent to running bash 'clear' command"

@@ -43,12 +43,14 @@ class TestChalk(unittest.TestCase):
         expected = '\x1b[1;4;30;47m'
         self.assertEqual(actual, expected)
 
-        self.assertRaises(TypeError, chalk.make_code, ('black', 'white'), {'opts': ('bold')})
+        self.assertRaises(
+            TypeError, chalk.make_code, ('black', 'white'), {'opts': ('bold')}
+        )
 
     def test_format_txt(self):
         "sometimes doc strings are useless"
         actual = chalk.format_txt('white', 'hello', 'black', None)
-        expected = "\x1b[37;40mhello\x1b[0m\n\r"
+        expected = "\x1b[37;40mhello\x1b[0m"
         self.assertEqual(actual, expected)
 
     def test_existance_of_needed_functions(self):
