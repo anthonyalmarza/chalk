@@ -39,7 +39,7 @@ $ cd chalk
 $ vitrualenv venv --no-site-packages --distribute
 $ source venv/bin/activate
 $ pip install nose
-$ nosetests chalk.tests # or simply python -m unittest chalk.tests
+$ nosetests -w chalk tests # or simply python -m unittest chalk.tests
 ......
 ----------------------------------------------------------------------
 Ran 6 tests in 0.002s
