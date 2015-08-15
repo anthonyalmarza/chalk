@@ -20,7 +20,7 @@ class TestChalk(unittest.TestCase):
             'reverse': '7',
             'hide': '8',
         }
-        for key, value in format_name_value_pairs.iteritems():
+        for key, value in list(format_name_value_pairs.items()):
             self.assertEqual(getattr(chalk.fnt, key), value)
 
     def test_colors(self):

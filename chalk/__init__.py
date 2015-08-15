@@ -50,7 +50,7 @@ def make_code(fg, bg=None, opts=None):
 
 
 def format_txt(fg, txt, bg, opts):
-    if not isinstance(txt, (str, unicode)):
+    if not isinstance(txt, str):
         txt = str(txt)
     return make_code(fg, bg, opts) + txt + _clear_formatting
 
