@@ -47,9 +47,13 @@ class TestChalk(unittest.TestCase):
             TypeError, chalk.make_code, ('black', 'white'), {'opts': ('bold')}
         )
 
-    def test_format_txt(self):
-        "sometimes doc strings are useless"
-        actual = chalk.format_txt('white', 'hello', 'black', None)
+    def test_format_txt_accepts_bytes(self):
+        actual = chalk.format_txt(b'white', b'hello', b'black', None)
+        expected = "\x1b[37;40mhello\x1b[0m"
+        self.assertEqual(actual, expected)
+
+    def test_format_txt_accepts_unicode(self):
+        actual = chalk.format_txt(u'white', u'hello', u'black', None)
         expected = "\x1b[37;40mhello\x1b[0m"
         self.assertEqual(actual, expected)
 

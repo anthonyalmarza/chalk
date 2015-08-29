@@ -11,11 +11,12 @@ Usage:
 """
 from collections import namedtuple
 from os import linesep
-from sys import stdout, modules
+from sys import stdout, modules, version_info
 
 
 __version__ = "1.0.0"
 
+PY3 = (version_info >= (3, 0))
 
 COLORS = (
     'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'
@@ -48,10 +49,25 @@ def make_code(fg, bg=None, opts=None):
         parts.append(value % getattr(bgs, bg))
     return _esc % ';'.join(parts)
 
+def convert_to_str(obj):
+    "Attempts to convert given object to a string object"
+    if not isinstance(obj, str):
+        if PY3 and (type(obj) == bytes):
+            obj = obj.decode("utf-8")
+        else:
+            obj = str(obj)
+    return obj
+
 
 def format_txt(fg, txt, bg, opts):
-    if not isinstance(txt, str):
-        txt = str(txt)
+    txt = convert_to_str(txt)
+    fg = convert_to_str(fg)
+
+    if bg != None:
+        bg = convert_to_str(bg)
+    if opts != None:
+        opts = convert_to_str(opts)
+
     return make_code(fg, bg, opts) + txt + _clear_formatting
 
 
