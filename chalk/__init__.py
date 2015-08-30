@@ -49,6 +49,7 @@ def make_code(fg, bg=None, opts=None):
         parts.append(value % getattr(bgs, bg))
     return _esc % ';'.join(parts)
 
+
 def convert_to_str(obj):
     "Attempts to convert given object to a string object"
     if not isinstance(obj, str):
@@ -60,14 +61,8 @@ def convert_to_str(obj):
 
 
 def format_txt(fg, txt, bg, opts):
-    txt = convert_to_str(txt)
-    fg = convert_to_str(fg)
-
-    if bg != None:
-        bg = convert_to_str(bg)
-    if opts != None:
-        opts = convert_to_str(opts)
-
+    fg, txt, bg, opts = \
+        [convert_to_str(val) if (val != None) else None for val in (fg, txt, bg, opts)]
     return make_code(fg, bg, opts) + txt + _clear_formatting
 
 
@@ -84,6 +79,7 @@ def chalk(fg):
         pipe.write(format_txt(fg, txt, bg, opts))
         pipe.write(linesep)
     return _chalk
+
 
 __module__ = modules[__name__]
 
