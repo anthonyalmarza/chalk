@@ -1,7 +1,6 @@
-chalk
+chalk [![Build Status](https://travis-ci.org/anthonyalmarza/chalk.svg?branch=master)](https://travis-ci.org/anthonyalmarza/chalk)
 =====
 
-[![Build Status](https://travis-ci.org/anthonyalmarza/chalk.svg?branch=master)](https://travis-ci.org/anthonyalmarza/chalk)
 
 ####*A Light-weight python package for terminal output in color*
 
