@@ -1,6 +1,8 @@
 chalk
 =====
 
+[![Build Status](https://travis-ci.org/anthonyalmarza/chalk.svg?branch=master)](https://travis-ci.org/anthonyalmarza/chalk)
+
 ####*A Light-weight python package for terminal output in color*
 
 *"Color printing so easy, makes you wanna smack yo' momma."*
