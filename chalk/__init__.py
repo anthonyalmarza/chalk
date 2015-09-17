@@ -11,7 +11,7 @@ Usage:
 """
 from collections import namedtuple
 from os import linesep
-from sys import stdout, modules
+from sys import stdout, stderr, modules
 
 
 __version__ = "1.0.0"

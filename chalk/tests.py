@@ -60,3 +60,7 @@ class TestChalk(unittest.TestCase):
 
         for color in COLORS:
             getattr(chalk, 'format_' + color)
+
+    def test_availability_of_stdout_and_stderr(self):
+        self.assertTrue(hasattr(chalk, 'stdout'))
+        self.assertTrue(hasattr(chalk, 'stderr'))
