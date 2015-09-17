@@ -16,8 +16,6 @@ from six import string_types
 from six.moves import map
 
 
-__version__ = "1.1.0"
-
 PY3 = (version_info >= (3, 0))
 
 COLORS = (
@@ -59,10 +57,6 @@ def convert_to_str(obj):
     elif not isinstance(obj, str):
         if PY3 and (type(obj) == bytes):
             obj = obj.decode("utf-8")
-        elif isinstance(obj, string_types):
-            obj = obj.encode('utf-8')
-        else:
-            obj = str(obj)
     return obj
 
 

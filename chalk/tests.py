@@ -1,7 +1,7 @@
 import unittest
 
 import chalk
-from six import unichr
+import six
 
 
 COLORS = (
@@ -55,9 +55,9 @@ class TestChalk(unittest.TestCase):
 
     def test_format_txt_accepts_unicode(self):
         actual = chalk.format_txt(
-            'white', 'abcd' + unichr(5000), 'black', None
+            'white', 'abcd' + six.unichr(5000), 'black', None
         )
-        expected = "\x1b[37;40mabcd\xe1\x8e\x88\x1b[0m"
+        expected = six.u("\x1b[37;40mabcd\u1388\x1b[0m")
         self.assertEqual(actual, expected)
 
     def test_existance_of_needed_functions(self):

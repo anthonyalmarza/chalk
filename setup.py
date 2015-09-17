@@ -1,8 +1,7 @@
-import chalk
 from setuptools import setup, find_packages
 
 
-version = chalk.__version__
+version = '1.1.0'
 
 
 setup(
