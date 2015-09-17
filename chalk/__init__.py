@@ -12,7 +12,7 @@ Usage:
 from collections import namedtuple
 from os import linesep
 from sys import stdout, stderr, modules, version_info
-from six import unichr, string_types
+from six import string_types
 from six.moves import map
 
 

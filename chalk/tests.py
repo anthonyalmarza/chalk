@@ -1,6 +1,7 @@
 import unittest
 
 import chalk
+from six import unichr
 
 
 COLORS = (
