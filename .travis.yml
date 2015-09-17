@@ -5,6 +5,7 @@ python:
   - "3.4"
 # command to install dependencies
 install:
-  - pip install -e .
+  - pip install six
+  - pip install .
 # command to run tests
 script: python -m unittest discover
