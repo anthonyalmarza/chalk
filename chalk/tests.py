@@ -20,7 +20,7 @@ class TestChalk(unittest.TestCase):
             'reverse': '7',
             'hide': '8',
         }
-        for key, value in format_name_value_pairs.iteritems():
+        for key, value in list(format_name_value_pairs.items()):
             self.assertEqual(getattr(chalk.fnt, key), value)
 
     def test_colors(self):
@@ -47,10 +47,16 @@ class TestChalk(unittest.TestCase):
             TypeError, chalk.make_code, ('black', 'white'), {'opts': ('bold')}
         )
 
-    def test_format_txt(self):
-        "sometimes doc strings are useless"
-        actual = chalk.format_txt('white', 'hello', 'black', None)
+    def test_format_txt_accepts_bytes(self):
+        actual = chalk.format_txt(b'white', b'hello', b'black', None)
         expected = "\x1b[37;40mhello\x1b[0m"
+        self.assertEqual(actual, expected)
+
+    def test_format_txt_accepts_unicode(self):
+        actual = chalk.format_txt(
+            'white', 'abcd' + unichr(5000), 'black', None
+        )
+        expected = "\x1b[37;40mabcd\xe1\x8e\x88\x1b[0m"
         self.assertEqual(actual, expected)
 
     def test_existance_of_needed_functions(self):

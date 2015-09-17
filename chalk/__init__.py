@@ -11,11 +11,14 @@ Usage:
 """
 from collections import namedtuple
 from os import linesep
-from sys import stdout, stderr, modules
+from sys import stdout, stderr, modules, version_info
+from six import unichr, string_types
+from six.moves import map
 
 
-__version__ = "1.0.2"
+__version__ = "1.1.0"
 
+PY3 = (version_info >= (3, 0))
 
 COLORS = (
     'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'
@@ -49,9 +52,22 @@ def make_code(fg, bg=None, opts=None):
     return _esc % ';'.join(parts)
 
 
+def convert_to_str(obj):
+    "Attempts to convert given object to a string object"
+    if obj is None:
+        return
+    elif not isinstance(obj, str):
+        if PY3 and (type(obj) == bytes):
+            obj = obj.decode("utf-8")
+        elif isinstance(obj, string_types):
+            obj = obj.encode('utf-8')
+        else:
+            obj = str(obj)
+    return obj
+
+
 def format_txt(fg, txt, bg, opts):
-    if not isinstance(txt, (str, unicode)):
-        txt = str(txt)
+    fg, txt, bg, opts = map(convert_to_str, (fg, txt, bg, opts))
     return make_code(fg, bg, opts) + txt + _clear_formatting
 
 
@@ -62,12 +78,13 @@ def format_factory(fg):
 
 
 def chalk(fg):
-    "A factory function that return piece of chalk"
+    "A factory function that returns piece of chalk"
     def _chalk(txt, bg=None, pipe=stdout, opts=None):
         "A piece of chalk that you call by color"
         pipe.write(format_txt(fg, txt, bg, opts))
         pipe.write(linesep)
     return _chalk
+
 
 __module__ = modules[__name__]
 

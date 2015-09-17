@@ -23,6 +23,7 @@ setup(
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP',
     ],
+    install_requires=['six', ],
     extras_require={'dev': ['ipdb', 'fabric', 'coverage']},
     keywords=["print", "color", "chalk", "logging"],
 )
