@@ -14,7 +14,7 @@ from os import linesep
 from sys import stdout, stderr, modules
 
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 
 COLORS = (
