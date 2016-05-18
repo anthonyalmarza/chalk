@@ -23,6 +23,6 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
     ],
     install_requires=['six', ],
-    extras_require={'dev': ['ipdb', 'fabric', 'coverage']},
+    extras_require={'dev': ['ipdb', 'tox', 'coverage']},
     keywords=["print", "color", "chalk", "logging"],
 )

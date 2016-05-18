@@ -1,11 +1,15 @@
 language: python
 python:
-  - "2.7"
-  - "3.3"
-  - "3.4"
-# command to install dependencies
+- '2.7'
 install:
-  - pip install six
-  - pip install .
-# command to run tests
-script: python -m unittest discover
+- pip install tox
+script:
+- tox
+deploy:
+  provider: pypi
+  user: anthonyalmarza
+  password:
+    secure: JWdBN3P0z+dXdCLzARWEN1Dpm0G7DQgJATxP2rCAz0/mjXVJL1VeY/nHR91IxHSRvNmCog5pwWXVdfGQ8E9YlG13a1M1XmOsrmLLVWvERj+jKLsa3NTtkKHFfPx5iKlj/qu12zafaAlSW0qcmhqwYlVJEKDuHkpgqcZiz1hu6At+l7J8o9x8lpKNot4JsTVMmEPZkN2Dpjock+TimlUWjqvVwAkkkt58Z6/h14ik9Jjy5KJjj2KGAIXPpDMUIKbgd21z5h6vnu388tRwseG3rbQBpM03E+xOoaGvrwBR/SYNMmmp/msYwCx2XMPeVp1dkb5r1e3JeKQHKhKgPW2EgXLWY6b8RjBAzvSztdhABFe824w4ISX4wwLIQxg4ggeVz1lr0mvT14iC/JwDAuxACiPDddV3LfkR/sNwsejY+Ad7CnDyFbgeabsyZmF1AaIkkgZ1u/UV18ZATy56/xMeMzCwRdXdO+ESFkI6pphrDaiG6F0XxtIPTf5I6f5VDRx/8DI/fufUFjJv/X5KfF2wgGgWVct+3H6CdFvkawVHmHqsJJx46GZ7yI7L7/YscY1h+QquXLaADrCBfCBDhxAAWNvKrjtbOZ4Y+Md23puZNZtJekHlpZdleTFFcddum9ehb3KF22/ofXHQWJfRPX26WUqUE6BUqfQPy1F1urOJVE4=
+  on:
+    tags: true
+    repo: anthonyalmarza/chalk

@@ -1,0 +1,6 @@
+[run]
+source = ./chalk
+omit = */tests.py
+
+[report]
+omit = */tests.py
