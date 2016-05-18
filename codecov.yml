@@ -1,0 +1,29 @@
+coverage:
+  precision: 2
+  round: down
+  range: "50...90"
+
+  status:
+    project:
+      default:
+        target: auto
+        if_no_uploads: error
+
+    patch:
+      default:
+        if_no_uploads: error
+
+    changes: true
+
+  notify:
+    slack:
+      default:
+        url: "secret:pSeZS6C+v4XjxYwkJOY9IOEXut5crkmHiyUpI1RiCTmDp2fzatoy0GEEhBwAz1CYq3miHb0CkT1awtqcB8j8CueIK3a+8+Xa98JLK/ExkzC3rTx5N33+pCglzEEeDdW6dVYzj5qAdYmpHz4snGkw4KsXsrfvCRxErHmdkqwsDjE="
+        branches: null                # -> see "branch patterns" below
+        threshold: null               # -> see "threshold" below
+        attachments: "sunburst, diff" # list of attachments to include in notification
+        message: "template string"
+
+comment:
+  layout: "header, diff, changes, suggestions"
+  behavior: default
