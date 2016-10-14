@@ -73,10 +73,9 @@ def format_factory(fg):
 
 def chalk(fg):
     "A factory function that returns piece of chalk"
-    def _chalk(txt, bg=None, pipe=stdout, opts=None):
+    def _chalk(txt, bg=None, pipe=stdout, opts=None, end=linesep):
         "A piece of chalk that you call by color"
-        pipe.write(format_txt(fg, txt, bg, opts))
-        pipe.write(linesep)
+        pipe.write(format_txt(fg, txt, bg, opts)+end)
     return _chalk
 
 
