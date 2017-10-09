@@ -37,7 +37,7 @@ bgs = Color(*['4%d' % i for i in range(8)])
 
 
 def make_code(fg, bg=None, opts=None):
-    "makes the visualization escape code"
+    """makes the visualization escape code"""
     value = '%s'
     if opts and isinstance(opts, str):
         opts = (opts,)

@@ -65,3 +65,5 @@ venv
 _trial_temp*
 *.sublime-workspace
 readme.md
+
+.vscode/
