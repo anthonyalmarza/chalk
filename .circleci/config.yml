@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: anthonyalmarza/alpine-pyenv:cable
+    environment:
+      BASH_ENV: ~/.bashrc
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - chalk-{{ .Branch }}-{{ checksum "requirements-dev.txt" }}
+      - run:
+          name: Install dev requirements
+          command: ./bin/install
+      - run:
+          name: Run the tests
+          command: ./bin/test
+      - save_cache:
+          key: chalk-{{ .Branch }}-{{ checksum "requirements-dev.txt" }}
+          paths:
+            - ./.tox
+            - ./venv
+      # TODO: collect the xml and store it in artifacts && push to codecov
+
+  deploy:
+    docker:
+      - image: anthonyalmarza/alpine-pyenv:cable
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - chalk-{{ .Branch }}-{{ checksum "requirements-dev.txt" }}
+      - run:
+          name: Install dev requirements
+          command: ./bin/install
+      - run:
+          name: Deploy
+          command: ./bin/deploy
+
+workflows:
+  version: 2
+  build-envs:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            tags:
+              only:
+                - /v[0-9](\.[0-9]+)*/
