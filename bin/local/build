@@ -1,0 +1,2 @@
+#!/bin/bash
+docker build . -t chalk --compress --no-cache

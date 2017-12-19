@@ -5,90 +5,48 @@ Usage:
 
     chalk.blue("Hello world!!")
     chalk.yellow("Listen to me!!!")
-    chalk.red("ERROR", pipe=chalk.stderr)
-    chalk.magenta('This is pretty cool', opts='bold')
-    chalk.cyan('...more stuff', opts=('bold', 'underscore'))
+    chalk.red("ERROR")
+    chalk.magenta('This is pretty cool', bold=True)
+    chalk.cyan('...more stuff', bold=True, underline=True)
 """
-from collections import namedtuple
-from os import linesep
-from sys import stdout, stderr, modules, version_info
+from __future__ import absolute_import, print_function, unicode_literals
 from six import string_types
-from six.moves import map
+from . import logging, utils
+from .utils import Chalk, FontFormat, RESET, eraser
 
-
-PY3 = (version_info >= (3, 0))
-
-COLORS = (
-    'black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white'
+__all__ = (
+    'logging',
+    'utils',
+    'Chalk',
+    'RESET',
+    'eraser',
+    'bold',
+    'underline',
+    'blink',
+    'reverse',
+    'hide',
+    'black',
+    'red',
+    'blue',
+    'green',
+    'yellow',
+    'magenta',
+    'cyan',
+    'white'
 )
 
-FORMATS = ('reset', 'bold', 'underscore', 'blink', 'reverse', 'hide')
+# pylint: disable=C0103
+bold = FontFormat('bold')
+underline = FontFormat('underline')
+blink = FontFormat('blink')
+reverse = FontFormat('reverse')
+hide = FontFormat('hide')
 
-Format = namedtuple('Format', FORMATS)
-Color = namedtuple('Color', COLORS)
-
-_esc = "\x1b[%sm"
-_clear_formatting = _esc % "0"
-
-# ansi standards http://ascii-table.com/ansi-escape-sequences.php
-fnt = Format('0', '1', '4', '5', '7', '8')
-fgs = Color(*['3%d' % i for i in range(8)])
-bgs = Color(*['4%d' % i for i in range(8)])
-
-
-def make_code(fg, bg=None, opts=None):
-    """makes the visualization escape code"""
-    value = '%s'
-    if opts and isinstance(opts, str):
-        opts = (opts,)
-    elif opts and not any(isinstance(opts, typo) for typo in (list, tuple)):
-        raise TypeError("opts expects a strict iterable. e.g. (x,)")
-    parts = [value % getattr(fnt, attr) for attr in opts] if opts else []
-    parts.append(value % getattr(fgs, fg))
-    if bg:
-        parts.append(value % getattr(bgs, bg))
-    return _esc % ';'.join(parts)
-
-
-def convert_to_str(obj):
-    "Attempts to convert given object to a string object"
-    if obj is None:
-        return
-    elif not isinstance(obj, str):
-        if PY3 and (type(obj) == bytes):
-            obj = obj.decode("utf-8")
-    return obj
-
-
-def format_txt(fg, txt, bg, opts):
-    fg, txt, bg, opts = map(convert_to_str, (fg, txt, bg, opts))
-    return make_code(fg, bg, opts) + txt + _clear_formatting
-
-
-def format_factory(fg):
-    def _format_txt(txt, bg=None, opts=None):
-        return format_txt(fg, txt, bg, opts)
-    return _format_txt
-
-
-def chalk(fg):
-    "A factory function that returns piece of chalk"
-    def _chalk(txt, bg=None, pipe=stdout, opts=None):
-        "A piece of chalk that you call by color"
-        pipe.write(format_txt(fg, txt, bg, opts))
-        pipe.write(linesep)
-    return _chalk
-
-
-__module__ = modules[__name__]
-
-# The chalk factory: makes chalk.red, chalk.blue, ... etcetera available.
-for color in COLORS:
-    setattr(__module__, color, chalk(color))
-    setattr(__module__, 'format_%s' % color, format_factory(color))
-
-
-def eraser():
-    "Equivalent to running bash 'clear' command"
-    stdout.write('\x1b[2J\x1b[0;0H' + linesep)
-    return
+black = Chalk('black')
+red = Chalk('red')
+blue = Chalk('blue')
+green = Chalk('green')
+yellow = Chalk('yellow')
+magenta = Chalk('magenta')
+cyan = Chalk('cyan')
+white = Chalk('white')

@@ -1,0 +1,51 @@
+CHANGES
+=======
+
+* ci changes
+* validated codecov config
+* adds codecov.yml config file
+* circleci configuration
+* updates readme
+* adds circle config
+* Update README.md
+* readme update
+* python3 ready..
+* pep8 and unichr fix
+* explicitly install six on travis
+* install with -e
+* conflict resolution, bumps version and adds py3 funct as proposed
+
+1.0.2
+-----
+
+* version bump
+* limit travis tests to 2.7
+* adds travis, updates testing utils and pep8
+* patch version bump
+* makes stderr available from chalk
+* Tidied up format\_txt function
+* Fixed handling of byte strings when chalk run in python3. Added unicode and bytestring tests for format\_txt() function
+* Ran 2to3 over code to make it forwards compatible with python 3
+
+1.0.0
+-----
+
+* adds default logs and bumps version to reflect chalks use in production
+* updates nosetests instructions
+* removes stderr import
+* improves newline handling for logs and handles non-string objects using str() closes #5 #7
+* updates version
+* closes #2 and adds chalk.eraser()
+* setup update
+* git push origin masterMerge branch 'livibetter-improve-readme'
+* readme update
+* improve README
+* fix color escape code
+* adds newline and return carriage
+* updates readme
+* updates readme
+* adds tests for basic usage
+* Update README.md
+* updates setup and readme
+* adding the first pass at the code
+* Initial commit

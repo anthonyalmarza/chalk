@@ -67,3 +67,6 @@ _trial_temp*
 readme.md
 
 .vscode/
+.python-version
+
+README.md
