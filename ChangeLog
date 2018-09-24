@@ -1,6 +1,12 @@
 CHANGES
 =======
 
+2.0.0
+-----
+
+* fixes tags pattern to match what pbr expects
+* fixes ci and readme
+* complete OOP, ci and readme refactor
 * ci changes
 * validated codecov config
 * adds codecov.yml config file

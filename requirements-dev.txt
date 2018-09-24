@@ -3,7 +3,7 @@ coverage==4.4.2
 ipdb==0.10.3
 pbr==3.1.1
 pylint==1.7.5
-pypandoc==1.4
+radon==2.1.1
 tox==2.9.1
 tox-pyenv==1.1.0
 twine==1.9.1
