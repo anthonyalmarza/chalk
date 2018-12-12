@@ -68,5 +68,6 @@ readme.md
 
 .vscode/
 .python-version
+.idea/
 
 README.md
