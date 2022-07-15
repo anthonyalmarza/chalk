@@ -1,4 +1,4 @@
-codecov==2.0.10
+codecov==2.0.16
 coverage==4.4.2
 ipdb==0.10.3
 pbr==3.1.1
