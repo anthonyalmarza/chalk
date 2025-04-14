@@ -1,6 +1,9 @@
 Chalk
 =====
 
+.. note::
+    This is a fork of `pychalk <https://github.com/anthonyalmarza/chalk>`_ to workaround an `issue with setuptools <https://github.com/anthonyalmarza/chalk/pull/23>`_.
+
 |CircleCI|
 
 |codecov|
