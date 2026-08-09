@@ -12,7 +12,7 @@ Usage:
 from __future__ import absolute_import, print_function, unicode_literals
 from six import string_types
 from . import logging, utils
-from .utils import Chalk, FontFormat, RESET, eraser
+from .utils import Chalk, FontFormat, RESET, eraser, rgb
 
 __all__ = (
     'logging',
@@ -20,6 +20,7 @@ __all__ = (
     'Chalk',
     'RESET',
     'eraser',
+    'rgb',
     'bold',
     'underline',
     'blink',

@@ -125,6 +125,17 @@ class Color(Style):
         """Helper method to validate and map values used in the instantiation of
             of the Color object to the correct unicode value.
         """
+        if isinstance(value, (list, tuple)) and len(value) == 3:
+            r, g, b = value
+            try:
+                r, g, b = int(r), int(g), int(b)
+                if not all(0 <= c <= 255 for c in (r, g, b)):
+                    raise ValueError
+            except ValueError:
+                raise ValueError(
+                    'RGB values must be integers between 0 and 255'
+                )
+            return '{}8;2;{};{};{}'.format(self.PREFIX, r, g, b)
         if value in COLOR_SET:
             value = COLOR_MAP[value]
         else:
@@ -132,10 +143,10 @@ class Color(Style):
                 value = int(value)
                 if value >= 8:
                     raise ValueError()
-            except ValueError as exc:
+            except ValueError:
                 raise ValueError(
                     'Colors should either a member of: {} or a positive '
-                    'integer below 8'.format(', '.join(COLOR_NAMES))
+                    'integer below 8 or an RGB tuple/list'.format(', '.join(COLOR_NAMES))
                 )
         return '{}{}'.format(self.PREFIX, value)
 
@@ -259,3 +270,8 @@ def to_str(obj):
     if not isinstance(obj, str) and PY3 and isinstance(obj, bytes):
         obj = obj.decode('utf-8')
     return obj if isinstance(obj, string_types) else str(obj)
+
+
+def rgb(r, g, b):
+    """Returns a Chalk instance with the specified RGB foreground color."""
+    return Chalk((r, g, b))
